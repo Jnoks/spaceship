@@ -48,4 +48,3 @@ function takeDamage() {
     console.log("Your ship was destroyed. Game over!");
   }
 }
-
