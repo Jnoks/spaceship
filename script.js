@@ -28,42 +28,65 @@ function renderStatus() {
 }
 
 function useRepairKit() {
-  if (shipHealth < 100 && inventory.length > 0) {
-    inventory.pop();
-    shipHealth = shipHealth + 50;
-    if (shipHealth > 100) {
-      shipHealth = 100;
-    }
-    console.log(
-      "The spaceship was repaired. +50 health! Health is now " + shipHealth,
-    );
-  } else if (inventory.length <= 0) {
-    console.log("No repair kits left.");
-  } else if (shipHealth === 100) {
-    console.log("Health is already at 100");
+  if (inventory.length <= 0) {
+    // Keine Repair Kits übrig anzeigen
+    renderStatus();
+    return;
   }
+  if (shipHealth >= 100) {
+    // Health ist bereits voll anzeigen
+    renderStatus();
+    return;
+  }
+  inventory.pop();
+  shipHealth = shipHealth + 50;
+  if (shipHealth > 100) {
+    shipHealth = 100;
+  }
+  // Erfolgreiche Reparatur auf der Seite anzeigen
   renderStatus();
 }
 
 function buyRepairKit() {
-  if (credits >= 250) {
-    credits = credits - 250;
-    inventory.push("repairKit");
-    console.log("Repair kit purchased! Credits left: " + credits);
+  const amount = Number(document.getElementById("repairkit-input").value);
+  if (amount <= 0) {
+    // Ungültige Eingabe auf der Seite anzeigen
+    renderStatus();
+    return; // Guard Clause = Verhindert ungültige Werte
+  }
+  const totalCost = amount * 250;
+  if (credits >= totalCost) {
+    credits = credits - totalCost;
+    for (let i = 0; i < amount; i++) {
+      inventory.push("repairKit");
+    }
+    // Anzeigen auf der Seite das etwas gekauft wurde
   } else {
-    console.log("Not enough credits to buy a repair kit.");
+    //Nicht genug geld anzeigen auf der seite
   }
   renderStatus();
 }
 
 function takeDamage() {
-  if (shipHealth > 0) {
-    const damage = Number(document.getElementById("damage-input").value);
-    shipHealth = shipHealth - damage;
-    if (shipHealth < 0) {
-      shipHealth = 0;
-    }
+  const damage = Number(document.getElementById("damage-input").value);
+  if (damage <= 0) {
+    // Ungültige Eingabe auf der Seite anzeigen
+    renderStatus();
+    return;
+  }
+  if (shipHealth <= 0) {
+    // Schiff ist bereits zerstört anzeigen
+    renderStatus();
+    return;
+  }
+  shipHealth = shipHealth - damage;
+  if (shipHealth < 0) {
+    shipHealth = 0;
+  }
+  if (shipHealth === 0) {
+    // Game over auf der Seite anzeigen
   } else {
+    // Erlittenen Schaden auf der Seite anzeigen
   }
   renderStatus();
 }
