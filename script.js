@@ -3,7 +3,7 @@ let shipHealth = 100;
 let credits = 1000;
 let inventory = ["repairKit", "repairKit", "repairKit"];
 
-function getStatus() {
+function renderStatus() {
   console.log("Spaceship name: " + spaceship);
   console.log("Spaceship health: " + shipHealth);
   console.log("Spaceship credits: " + credits);
