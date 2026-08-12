@@ -1,0 +1,13 @@
+.destroyed {
+  background-color: darkred;
+}
+
+#game-over {
+  color: red;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}

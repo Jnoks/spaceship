@@ -25,16 +25,27 @@ function renderStatus() {
         </tr>
     </table>
   `;
+  if (shipHealth <= 0) {
+    document.body.classList.add("destroyed");
+    document.getElementById("game-over").classList.remove("hidden");
+  } else {
+    document.body.classList.remove("destroyed");
+    document.getElementById("game-over").classList.add("hidden");
+  }
+}
+
+function showMessage(text) {
+  document.getElementById("message").innerHTML = text;
 }
 
 function useRepairKit() {
   if (inventory.length <= 0) {
-    // Keine Repair Kits übrig anzeigen
+    showMessage("No repair kits left.");
     renderStatus();
     return;
   }
   if (shipHealth >= 100) {
-    // Health ist bereits voll anzeigen
+    showMessage("Health is already at 100.");
     renderStatus();
     return;
   }
@@ -43,14 +54,14 @@ function useRepairKit() {
   if (shipHealth > 100) {
     shipHealth = 100;
   }
-  // Erfolgreiche Reparatur auf der Seite anzeigen
+  showMessage("The spaceship was repaired. +50 health!");
   renderStatus();
 }
 
 function buyRepairKit() {
   const amount = Number(document.getElementById("repairkit-input").value);
   if (amount <= 0) {
-    // Ungültige Eingabe auf der Seite anzeigen
+    showMessage("Please enter a valid amount.");
     renderStatus();
     return; // Guard Clause = Verhindert ungültige Werte
   }
@@ -60,9 +71,9 @@ function buyRepairKit() {
     for (let i = 0; i < amount; i++) {
       inventory.push("repairKit");
     }
-    // Anzeigen auf der Seite das etwas gekauft wurde
+    showMessage(amount + " repair kits purchased!");
   } else {
-    //Nicht genug geld anzeigen auf der seite
+    showMessage("Not enough credits for " + amount + " repair kits.");
   }
   renderStatus();
 }
@@ -70,12 +81,12 @@ function buyRepairKit() {
 function takeDamage() {
   const damage = Number(document.getElementById("damage-input").value);
   if (damage <= 0) {
-    // Ungültige Eingabe auf der Seite anzeigen
+    showMessage("Please enter a valid amount.");
     renderStatus();
     return;
   }
   if (shipHealth <= 0) {
-    // Schiff ist bereits zerstört anzeigen
+    showMessage("Your ship is already destroyed.");
     renderStatus();
     return;
   }
@@ -84,9 +95,9 @@ function takeDamage() {
     shipHealth = 0;
   }
   if (shipHealth === 0) {
-    // Game over auf der Seite anzeigen
+    showMessage("Your ship was destroyed. Game over!");
   } else {
-    // Erlittenen Schaden auf der Seite anzeigen
+    showMessage("You took " + damage + " damage.");
   }
   renderStatus();
 }

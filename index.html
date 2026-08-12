@@ -9,6 +9,8 @@
   <body>
     <h1>Spaceship</h1>
 
+    <p id="game-over" class="hidden">GAME OVER</p>
+
     <section id="stats"></section>
 
     <input type="number" name="damage" id="damage-input" />
@@ -16,6 +18,9 @@
 
     <input type="number" name="repair" id="repairkit-input" />
     <button onclick="buyRepairKit();">Buy repair kit</button>
+    <button onclick="useRepairKit();">Use repair kit</button>
+
+    <p id="message"></p>
 
   </body>
   <script src="./script.js"></script>
