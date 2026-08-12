@@ -1,13 +1,30 @@
 const spaceship = "Titan";
 let shipHealth = 100;
 let credits = 1000;
-let inventory = ["repairKit", "repairKit", "repairKit"];
+const inventory = ["repairKit", "repairKit", "repairKit"];
 
 function renderStatus() {
-  console.log("Spaceship name: " + spaceship);
-  console.log("Spaceship health: " + shipHealth);
-  console.log("Spaceship credits: " + credits);
-  console.log("Spaceship inventory: " + inventory);
+  document.getElementById("stats").innerHTML = /*html*/ `
+    <h2>Stats</h2>
+    <table>
+        <tr>
+          <td>Name</td>
+          <td>${spaceship}</td>
+        </tr>
+        <tr>
+          <td>Health</td>
+          <td>${shipHealth}</td>
+        </tr>
+        <tr>
+          <td>Credits</td>
+          <td>${credits}</td>
+        </tr>
+        <tr>
+          <td>Inventory</td>
+          <td>${inventory}</td>
+        </tr>
+    </table>
+  `;
 }
 
 function useRepairKit() {
@@ -25,6 +42,7 @@ function useRepairKit() {
   } else if (shipHealth === 100) {
     console.log("Health is already at 100");
   }
+  renderStatus();
 }
 
 function buyRepairKit() {
@@ -35,16 +53,19 @@ function buyRepairKit() {
   } else {
     console.log("Not enough credits to buy a repair kit.");
   }
+  renderStatus();
 }
 
 function takeDamage() {
   if (shipHealth > 0) {
-    shipHealth = shipHealth - 25;
-    console.log("You took 25 damage. Health is now " + shipHealth);
-    if (shipHealth === 0) {
-      console.log("Your ship was destroyed. Game over!");
+    const damage = Number(document.getElementById("damage-input").value);
+    shipHealth = shipHealth - damage;
+    if (shipHealth < 0) {
+      shipHealth = 0;
     }
   } else {
-    console.log("Your ship was destroyed. Game over!");
   }
+  renderStatus();
 }
+
+renderStatus();
