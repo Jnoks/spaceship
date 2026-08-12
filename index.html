@@ -4,24 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spaceship</title>
+    <link rel="stylesheet" href="./variables.css" />
+    <link rel="stylesheet" href="./fonts.css" />
+    <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1>Spaceship</h1>
+    <main>
+      <h1>SPACESHIP<span class="cursor">_</span></h1>
 
-    <p id="game-over" class="hidden">GAME OVER</p>
+      <p id="game-over" class="hidden">GAME OVER</p>
 
-    <section id="stats"></section>
+      <section id="stats"></section>
 
-    <input type="number" name="damage" id="damage-input" />
-    <button onclick="takeDamage()">Attack</button>
+      <div class="controls">
+        <div class="control-group">
+          <input type="number" name="damage" id="damage-input" />
+          <button onclick="takeDamage()" class="attack">ATTACK</button>
+        </div>
+        <div class="control-group">
+          <input type="number" name="repair" id="repairkit-input" />
+          <button onclick="buyRepairKit();">BUY REPAIR KIT</button>
+        </div>
+        <div class="control-group">
+          <button onclick="useRepairKit();">USE REPAIR KIT</button>
+        </div>
+      </div>
 
-    <input type="number" name="repair" id="repairkit-input" />
-    <button onclick="buyRepairKit();">Buy repair kit</button>
-    <button onclick="useRepairKit();">Use repair kit</button>
-
-    <p id="message"></p>
-
+      <p id="message"></p>
+    </main>
   </body>
   <script src="./script.js"></script>
 </html>

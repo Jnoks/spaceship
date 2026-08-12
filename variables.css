@@ -1,0 +1,16 @@
+:root {
+  --color-background: #181818;
+  --color-panel: #1f1f1f;
+  --color-surface: #313131;
+  --color-border: #3c3c3c;
+  --color-hover: #2a2d2e;
+  --color-text: #cccccc;
+  --color-text-muted: #9d9d9d;
+  --color-accent: #0078d4;
+  --color-accent-hover: #026ec1;
+  --color-accent-bright: #4daafc;
+  --color-danger: #f85149;
+  --color-danger-button: #da3633;
+  --color-danger-button-hover: #b62324;
+  --color-destroyed: #241111;
+}

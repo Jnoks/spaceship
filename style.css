@@ -1,13 +1,174 @@
-.destroyed {
-  background-color: darkred;
+body {
+  background-color: var(--color-background);
+  background-image: url("./assets/img/starfield.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100dvh;
+  font-family: "Share Tech Mono";
+  font-size: 16px;
+  color: var(--color-text);
+  padding: 16px;
+}
+
+main {
+  max-width: 440px;
+  width: 100%;
+  margin: 32px auto;
+  padding: 24px;
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h1 {
+  font-family: "VT323";
+  font-size: 40px;
+  font-weight: normal;
+  color: var(--color-text);
+}
+
+.cursor {
+  color: var(--color-accent-bright);
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--color-text-muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+td {
+  color: var(--color-text);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+td:first-child {
+  color: var(--color-text-muted);
+}
+
+td:last-child {
+  text-align: right;
+}
+
+tr:hover {
+  background-color: var(--color-hover);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+}
+
+.control-group button {
+  flex-grow: 1;
+}
+
+input[type="number"] {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 10px 12px;
+  width: 90px;
+  font-family: "Share Tech Mono";
+  font-size: 16px;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:hover {
+  border-color: var(--color-accent);
+}
+
+button {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-family: "Share Tech Mono";
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.attack {
+  background-color: var(--color-danger-button);
+}
+
+.attack:hover {
+  background-color: var(--color-danger-button-hover);
+}
+
+#message {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border-left: 3px solid var(--color-accent);
+  padding: 10px 14px;
+  font-size: 16px;
+  min-height: 42px;
+}
+
+.prompt {
+  color: var(--color-accent-bright);
 }
 
 #game-over {
-  color: red;
-  font-size: 3rem;
-  font-weight: bold;
+  font-family: "VT323";
+  font-size: 48px;
+  text-align: center;
+  color: var(--color-danger);
+  border: 2px solid var(--color-danger);
+  padding: 16px;
 }
 
 .hidden {
   display: none;
+}
+
+body.destroyed {
+  background-image: none;
+  background-color: var(--color-destroyed);
+}
+
+body.destroyed main {
+  border-color: var(--color-danger);
+}
+
+body.destroyed #message {
+  border-left-color: var(--color-danger);
+}
+
+body.destroyed .prompt {
+  color: var(--color-danger);
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 12px;
+    margin: 12px auto;
+  }
 }

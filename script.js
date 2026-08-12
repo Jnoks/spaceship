@@ -5,23 +5,23 @@ const inventory = ["repairKit", "repairKit", "repairKit"];
 
 function renderStatus() {
   document.getElementById("stats").innerHTML = /*html*/ `
-    <h2>Stats</h2>
+    <h2>STATS</h2>
     <table>
         <tr>
-          <td>Name</td>
+          <td>NAME</td>
           <td>${spaceship}</td>
         </tr>
         <tr>
-          <td>Health</td>
+          <td>HEALTH</td>
           <td>${shipHealth}</td>
         </tr>
         <tr>
-          <td>Credits</td>
+          <td>CREDITS</td>
           <td>${credits}</td>
         </tr>
         <tr>
-          <td>Inventory</td>
-          <td>${inventory}</td>
+          <td>INVENTORY</td>
+          <td>${inventory.join(", ")}</td>
         </tr>
     </table>
   `;
@@ -35,7 +35,7 @@ function renderStatus() {
 }
 
 function showMessage(text) {
-  document.getElementById("message").innerHTML = text;
+  document.getElementById("message").innerHTML = '<span class="prompt">> </span>' + text;
 }
 
 function useRepairKit() {
