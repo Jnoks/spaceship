@@ -63,9 +63,9 @@ function buyRepairKit() {
   if (amount <= 0) {
     showMessage("Please enter a valid amount.");
     renderStatus();
-    return; // Guard Clause = Verhindert ungültige Werte
+    return; 
   }
-  const totalCost = amount * 250;
+  const totalCost = amount * 100;
   if (credits >= totalCost) {
     credits = credits - totalCost;
     for (let i = 0; i < amount; i++) {
@@ -74,6 +74,26 @@ function buyRepairKit() {
     showMessage(amount + " repair kits purchased!");
   } else {
     showMessage("Not enough credits for " + amount + " repair kits.");
+  }
+  renderStatus();
+}
+
+function buyShield() {
+  const amount = Number(document.getElementById("shield-input").value);
+  if (amount <= 0) {
+    showMessage("Please enter a valid amount.");
+    renderStatus();
+    return; 
+  }
+  const totalCost = amount * 50;
+  if (credits >= totalCost) {
+    credits = credits - totalCost;
+    for (let i = 0; i < amount; i++) {
+      inventory.push("shield");
+    }
+    showMessage(amount + " shield purchased!");
+  } else {
+    showMessage("Not enough credits for " + amount + " a shield.");
   }
   renderStatus();
 }
