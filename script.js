@@ -39,7 +39,8 @@ function showMessage(text) {
 }
 
 function useRepairKit() {
-  if (inventory.length <= 0) {
+  let index = inventory.indexOf("repairKit")
+  if (index == -1) {
     showMessage("No repair kits left.");
     renderStatus();
     return;
@@ -49,7 +50,7 @@ function useRepairKit() {
     renderStatus();
     return;
   }
-  inventory.pop();
+  inventory.splice(index, 1);
   shipHealth = shipHealth + 50;
   if (shipHealth > 100) {
     shipHealth = 100;
@@ -71,7 +72,7 @@ function buyRepairKit() {
     for (let i = 0; i < amount; i++) {
       inventory.push("repairKit");
     }
-    showMessage(amount + " repair kits purchased!");
+    showMessage(amount + " repair kit(s) purchased!");
   } else {
     showMessage("Not enough credits for " + amount + " repair kits.");
   }
@@ -91,9 +92,9 @@ function buyShield() {
     for (let i = 0; i < amount; i++) {
       inventory.push("shield");
     }
-    showMessage(amount + " shield purchased!");
+    showMessage(amount + " shield(s) purchased!");
   } else {
-    showMessage("Not enough credits for " + amount + " a shield.");
+    showMessage("Not enough credits for " + amount + " a shield(s).");
   }
   renderStatus();
 }
