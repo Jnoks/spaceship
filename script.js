@@ -60,26 +60,6 @@ function useRepairKit() {
   renderStatus();
 }
 
-function buyRepairKit() {
-  const amount = Number(document.getElementById("repairkit-input").value);
-  if (amount <= 0) {
-    showMessage("Please enter a valid amount.");
-    renderStatus();
-    return;
-  }
-  const totalCost = amount * 100;
-  if (credits >= totalCost) {
-    credits = credits - totalCost;
-    for (let i = 0; i < amount; i++) {
-      inventory.push("repairKit");
-    }
-    showMessage(amount + " repair kit(s) purchased!");
-  } else {
-    showMessage("Not enough credits for " + amount + " repair kits.");
-  }
-  renderStatus();
-}
-
 function buyItem(item, price, inputId) {
   const amount = Number(document.getElementById(inputId).value);
   if (amount <= 0) {
