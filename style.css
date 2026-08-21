@@ -144,6 +144,17 @@ button:disabled {
   color: var(--color-accent-bright);
 }
 
+.progress-bar {
+  background-color: darkgreen;
+  width: 100%;
+  height: 20px;
+}
+
+.progress {
+  background-color: chartreuse;
+  height: 20px;
+} 
+
 #game-over {
   font-family: "VT323";
   font-size: 48px;
