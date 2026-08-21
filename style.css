@@ -151,7 +151,7 @@ button:disabled {
 }
 
 .progress {
-  background-color: chartreuse;
+  background-color: rgb(16, 138, 16);
   height: 20px;
   border-radius: 8px;
 } 
