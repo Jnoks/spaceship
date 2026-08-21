@@ -2,6 +2,14 @@ const spaceship = "Titan";
 let shipHealth = 100;
 let credits = 1000;
 const inventory = ["shield", "repairKit", "repairKit", "repairKit"];
+const ITEM_ICONS = {
+  repairKit: "🔧",
+  shield: "🛡️",
+};
+const ITEM_NAMES = {
+  repairKit: "Repair Kit",
+  shield: "Shield",
+}
 
 function renderStatus() {
   document.getElementById("stats").innerHTML = /*html*/ `
@@ -21,7 +29,7 @@ function renderStatus() {
         </tr>
         <tr>
           <td>INVENTORY</td>
-          <td>${inventory.join(", ")}</td>
+          <td>${getInventoryIcons()}</td>
         </tr>
     </table>
   `;
@@ -121,14 +129,25 @@ function takeDamage() {
 function reset() {
   shipHealth = 100;
   credits = 1000;
-  inventory.splice(0, inventory.length)
-  inventory.push("shield", "repairKit", "repairKit", "repairKit")
+  inventory.splice(0, inventory.length);
+  inventory.push("shield", "repairKit", "repairKit", "repairKit");
   document.getElementById("attack").disabled = false;
   document.getElementById("buy-repairkit").disabled = false;
   document.getElementById("buy-shield").disabled = false;
   document.getElementById("use-repairkit").disabled = false;
-  showMessage("")
+  showMessage("");
   renderStatus();
 }
 
+function getInventoryIcons() {
+  let html = "";
+  for (let i = 0; i < inventory.length; i++) {
+    html += /*html*/`
+      <span class="icons" title="${ITEM_NAMES[inventory[i]]}">${ITEM_ICONS[inventory[i]]}</span>
+    `;
+  }
+  return html;
+}
+
 renderStatus();
+getInventoryIcons();
