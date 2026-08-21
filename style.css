@@ -145,14 +145,15 @@ button:disabled {
 }
 
 .progress-bar {
-  background-color: darkgreen;
-  width: 100%;
+  background-color: transparent;
+  width: 280px;
   height: 20px;
 }
 
 .progress {
   background-color: chartreuse;
   height: 20px;
+  border-radius: 8px;
 } 
 
 #game-over {

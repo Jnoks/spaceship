@@ -13,7 +13,7 @@ function renderStatus() {
         </tr>
         <tr>
           <td>HEALTH</td>
-          <td><div class="progress-bar"><div class="progress" style="width:${shipHealth}%"></div></div></td>
+          <td><div class="progress-bar"><div class="progress" style="width:${shipHealth}%">${shipHealth}%</div></div></td>
         </tr>
         <tr>
           <td>CREDITS</td>
