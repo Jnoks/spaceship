@@ -80,22 +80,22 @@ function buyRepairKit() {
   renderStatus();
 }
 
-function buyShield() {
-  const amount = Number(document.getElementById("shield-input").value);
+function buyItem(item, price, inputId) {
+  const amount = Number(document.getElementById(inputId).value);
   if (amount <= 0) {
     showMessage("Please enter a valid amount.");
     renderStatus();
     return;
   }
-  const totalCost = amount * 50;
+  const totalCost = amount * price;
   if (credits >= totalCost) {
     credits = credits - totalCost;
     for (let i = 0; i < amount; i++) {
-      inventory.push("shield");
+      inventory.push(item);
     }
-    showMessage(amount + " shield(s) purchased!");
+    showMessage(amount + " " + item + "(s) purchased!");
   } else {
-    showMessage("Not enough credits for " + amount + " a shield(s).");
+    showMessage("Not enough credits for " + amount + " " + item + "(s).");
   }
   renderStatus();
 }
