@@ -118,4 +118,17 @@ function takeDamage() {
   renderStatus();
 }
 
+function reset() {
+  shipHealth = 100;
+  credits = 1000;
+  inventory.splice(0, inventory.length)
+  inventory.push("shield", "repairKit", "repairKit", "repairKit")
+  document.getElementById("attack").disabled = false;
+  document.getElementById("buy-repairkit").disabled = false;
+  document.getElementById("buy-shield").disabled = false;
+  document.getElementById("use-repairkit").disabled = false;
+  showMessage("")
+  renderStatus();
+}
+
 renderStatus();
