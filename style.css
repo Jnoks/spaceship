@@ -115,6 +115,14 @@ button:hover {
   background-color: var(--color-accent-hover);
 }
 
+button:disabled:hover {
+  background-color: gray;
+}
+
+button:disabled {
+  background-color: gray;
+}
+
 .attack {
   background-color: var(--color-danger-button);
 }

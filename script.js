@@ -129,6 +129,10 @@ function takeDamage() {
     shipHealth = 0;
   }
   if (shipHealth === 0) {
+    document.getElementById("attack").disabled = true;
+    document.getElementById("buy-repairkit").disabled = true;
+    document.getElementById("buy-shield").disabled = true;
+    document.getElementById("use-repairkit").disabled = true;
     showMessage("Your ship was destroyed. Game over!");
   }
   renderStatus();
