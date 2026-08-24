@@ -60,29 +60,14 @@ function renderStatusEnemy() {
     <table>
         <tr>
           <td>NAME</td>
-          <td>${spaceship}</td>
+          <td>${ENEMIES[0].name}</td>
         </tr>
         <tr>
           <td>HEALTH</td>
-          <td><div class="progress-bar"><div class="progress" style="width:${shipHealth}%">${shipHealth}%</div></div></td>
-        </tr>
-        <tr>
-          <td>CREDITS</td>
-          <td><img class="icons" src="${ITEM_ICONS.credits}">${credits}</td>
-        </tr>
-        <tr>
-          <td>INVENTORY</td>
-          <td>${getInventoryIcons()}</td>
+          <td><div class="progress-bar"><div class="progress" style="width:${ENEMIES[0].maxHealth}%">${ENEMIES[0].maxHealth}%</div></div></td>
         </tr>
     </table>
   `;
-  if (shipHealth <= 0) {
-    document.body.classList.add("destroyed");
-    document.getElementById("game-over").classList.remove("hidden");
-  } else {
-    document.body.classList.remove("destroyed");
-    document.getElementById("game-over").classList.add("hidden");
-  }
 }
 
 function showMessage(text) {
@@ -145,7 +130,7 @@ function takeDamage(damage) {
   const index = inventory.indexOf("shield");
   if (index !== -1) {
     inventory.splice(index, 1);
-    damage = damage / 2;
+    damage = Math.round(damage / 2);
     showMessage(
       "You took " +
         damage +

@@ -209,6 +209,10 @@ body.destroyed .prompt {
   color: var(--color-danger);
 }
 
+.test {
+  width: 256px;
+}
+
 @media (max-width: 480px) {
   main {
     padding: 12px;
