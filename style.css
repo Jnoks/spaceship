@@ -1,6 +1,6 @@
 body {
   background-color: var(--color-background);
-  background-image: url("./assets/img/starfield.jpg");
+  background-image: url("./assets/img/backgrounds/bg-starfield.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,7 +37,21 @@ h1 {
 
 .icons {
   cursor: pointer;
-  font-size: 24px;
+  width: 36px;
+  height: auto;
+}
+
+.icons:hover {
+  box-shadow: 10px;
+  background-color: rgba(19, 72, 2, 0.454);
+}
+
+td:last-child {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 h2 {
@@ -159,7 +173,7 @@ button:disabled {
   background-color: rgb(16, 138, 16);
   height: 20px;
   border-radius: 8px;
-} 
+}
 
 #game-over {
   font-family: "VT323";

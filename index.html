@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="./fonts.css" />
     <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./style.css" />
-      <script src="./script.js" defer></script>
+    <script src="./script.js" defer></script>
   </head>
   <body>
     <main>
       <h1>SPACESHIP<span class="cursor">_</span></h1>
 
       <div id="game-over">
-      <p>GAME OVER</p>
-      <button onclick="reset();">RESET</button>
+        <p>GAME OVER</p>
+        <button onclick="reset()">RESET</button>
       </div>
 
       <section id="stats"></section>
@@ -24,22 +24,37 @@
       <div class="controls">
         <div class="control-group">
           <input type="number" name="damage" id="damage-input" />
-          <button id="attack" onclick="takeDamage()" class="attack">ATTACK</button>
+          <button id="attack" onclick="takeDamage()" class="attack">
+            ATTACK
+          </button>
         </div>
         <div class="control-group">
           <input type="number" name="repair" id="repairkit-input" />
-          <button id="buy-repairkit" onclick="buyItem('repairKit', 100, 'repairkit-input');">BUY REPAIR KIT</button>
+          <button
+            id="buy-repairkit"
+            onclick="buyItem('repairKit', 100, 'repairkit-input')"
+          >
+            BUY REPAIR KIT
+          </button>
         </div>
         <div class="control-group">
           <input type="number" name="shield" id="shield-input" />
-          <button id="buy-shield" onclick="buyItem('shield', 50, 'shield-input');">BUY SHIELD</button>
+          <button
+            id="buy-shield"
+            onclick="buyItem('shield', 50, 'shield-input')"
+          >
+            BUY SHIELD
+          </button>
         </div>
         <div class="control-group">
-          <button id="use-repairkit" onclick="useRepairKit();">USE REPAIR KIT</button>
+          <button id="use-repairkit" onclick="useRepairKit()">
+            USE REPAIR KIT
+          </button>
         </div>
       </div>
 
       <p id="message"></p>
+      <img src="./assets/img/ships/titan.png" alt="" />
     </main>
   </body>
 </html>

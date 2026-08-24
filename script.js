@@ -3,13 +3,15 @@ let shipHealth = 100;
 let credits = 1000;
 const inventory = ["shield", "repairKit", "repairKit", "repairKit"];
 const ITEM_ICONS = {
-  repairKit: "🔧",
-  shield: "🛡️",
+  repairKit: "./assets/img/icons/repairKit.png",
+  shield: "./assets/img/icons/shield.png",
+  credits: "./assets/img/icons/credits.png",
 };
 const ITEM_NAMES = {
   repairKit: "Repair Kit",
   shield: "Shield",
-}
+  credits: "Credits",
+};
 
 function renderStatus() {
   document.getElementById("stats").innerHTML = /*html*/ `
@@ -25,7 +27,7 @@ function renderStatus() {
         </tr>
         <tr>
           <td>CREDITS</td>
-          <td>${credits}</td>
+          <td><img class="icons" src="${ITEM_ICONS.credits}">${credits}</td>
         </tr>
         <tr>
           <td>INVENTORY</td>
@@ -142,8 +144,8 @@ function reset() {
 function getInventoryIcons() {
   let html = "";
   for (let i = 0; i < inventory.length; i++) {
-    html += /*html*/`
-      <span class="icons" title="${ITEM_NAMES[inventory[i]]}">${ITEM_ICONS[inventory[i]]}</span>
+    html += /*html*/ `
+      <img class="icons" src="${ITEM_ICONS[inventory[i]]}" title="${ITEM_NAMES[inventory[i]]}">
     `;
   }
   return html;
