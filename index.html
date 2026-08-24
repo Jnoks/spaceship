@@ -11,23 +11,26 @@
     <script src="./script.js" defer></script>
   </head>
   <body>
-    <main>
-      <h1>SPACESHIP<span class="cursor">_</span></h1>
+    <div class="fight">
+      <section class="titan">
+        <h1>YOUR SPACESHIP<span class="cursor">_</span></h1>
 
-      <div id="game-over">
-        <p>GAME OVER</p>
-        <button onclick="reset()">RESET</button>
-      </div>
+        <section id="stats"></section>
 
-      <section id="stats"></section>
+        <img src="./assets/img/ships/titan.png" alt="" />
+      </section>
 
+      <section class="titan">
+        <h1>ENEMY SPACESHIP<span class="cursor">_</span></h1>
+
+        <section id="statsEnemy"></section>
+
+        <img src="./assets/img/ships/enemy01.png" alt="" />
+      </section>
+    </div>
+
+    <section class="titan">
       <div class="controls">
-        <div class="control-group">
-          <input type="number" name="damage" id="damage-input" />
-          <button id="attack" onclick="takeDamage()" class="attack">
-            ATTACK
-          </button>
-        </div>
         <div class="control-group">
           <input type="number" name="repair" id="repairkit-input" />
           <button
@@ -51,10 +54,22 @@
             USE REPAIR KIT
           </button>
         </div>
+        <div class="control-group">
+          <button
+            id="attack"
+            onclick="takeDamage(enemyAttack())"
+            class="attack"
+          >
+            START FIGHT
+          </button>
+        </div>
       </div>
 
       <p id="message"></p>
-      <img src="./assets/img/ships/titan.png" alt="" />
-    </main>
+      <div id="game-over">
+        <p>GAME OVER</p>
+        <button onclick="reset()">RESET</button>
+      </div>
+    </section>
   </body>
 </html>

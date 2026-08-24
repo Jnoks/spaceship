@@ -13,8 +13,49 @@ const ITEM_NAMES = {
   credits: "Credits",
 };
 
+const ENEMIES = [
+  {
+    name: "Scout",
+    img: "./assets/img/ships/enemy01.png",
+    maxHealth: 60,
+    minDamage: 5,
+    maxDamage: 15,
+  },
+];
+
 function renderStatus() {
   document.getElementById("stats").innerHTML = /*html*/ `
+    <h2>STATS</h2>
+    <table>
+        <tr>
+          <td>NAME</td>
+          <td>${spaceship}</td>
+        </tr>
+        <tr>
+          <td>HEALTH</td>
+          <td><div class="progress-bar"><div class="progress" style="width:${shipHealth}%">${shipHealth}%</div></div></td>
+        </tr>
+        <tr>
+          <td>CREDITS</td>
+          <td><img class="icons" src="${ITEM_ICONS.credits}">${credits}</td>
+        </tr>
+        <tr>
+          <td>INVENTORY</td>
+          <td>${getInventoryIcons()}</td>
+        </tr>
+    </table>
+  `;
+  if (shipHealth <= 0) {
+    document.body.classList.add("destroyed");
+    document.getElementById("game-over").classList.remove("hidden");
+  } else {
+    document.body.classList.remove("destroyed");
+    document.getElementById("game-over").classList.add("hidden");
+  }
+}
+
+function renderStatusEnemy() {
+  document.getElementById("statsEnemy").innerHTML = /*html*/ `
     <h2>STATS</h2>
     <table>
         <tr>
@@ -90,8 +131,7 @@ function buyItem(item, price, inputId) {
   renderStatus();
 }
 
-function takeDamage() {
-  let damage = Number(document.getElementById("damage-input").value);
+function takeDamage(damage) {
   if (damage <= 0) {
     showMessage("Please enter a valid amount.");
     renderStatus();
@@ -151,5 +191,13 @@ function getInventoryIcons() {
   return html;
 }
 
+function enemyAttack() {
+  const enemy = ENEMIES[0];
+  const damage =
+    Math.floor(Math.random() * (enemy.maxDamage - enemy.minDamage + 1)) +
+    enemy.minDamage;
+  return damage;
+}
+
 renderStatus();
-getInventoryIcons();
+renderStatusEnemy();
